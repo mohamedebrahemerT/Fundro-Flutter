@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fundro_app/features/auth/presentation/screens/forget_password_screen.dart';
 import 'package:fundro_app/features/auth/presentation/screens/register_screen.dart';
 import 'package:fundro_app/features/auth/presentation/widgets/auth_button.dart';
 import 'package:fundro_app/features/auth/presentation/widgets/custom_auth_button.dart';
@@ -51,7 +52,9 @@ class LoginScreen extends StatelessWidget {
               Align(
                 alignment: Alignment.centerRight,
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(() => const ForgetPasswordScreen());
+                  },
                   child: const Text(
                     "نسيت كلمة المرور؟",
                     style: TextStyle(color: Colors.grey, fontSize: 12),
