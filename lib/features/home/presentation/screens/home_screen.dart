@@ -1,20 +1,5 @@
-import 'package:fundro_app/common/widgets/home_app_bar.dart';
-import 'package:fundro_app/common/widgets/news_letter_card.dart';
-import 'package:fundro_app/common/widgets/sale_banner.dart';
-import 'package:fundro_app/core/utils/dimensions.dart';
-import 'package:fundro_app/core/utils/styles.dart';
-import 'package:fundro_app/features/category/presentation/wisgets/categories_section.dart';
-import 'package:fundro_app/features/category/presentation/wisgets/category_card.dart';
-import 'package:fundro_app/features/category/presentation/wisgets/category_list_view.dart';
-import 'package:fundro_app/features/home/presentation/screens/widgets/home_slider.dart';
-import 'package:fundro_app/features/products/presentation/controllers/product_controller.dart';
-import 'package:fundro_app/features/products/presentation/screens/product_screen.dart';
-import 'package:fundro_app/features/products/presentation/widgets/product_car.dart';
-import 'package:fundro_app/features/products/presentation/widgets/products_grid_view.dart';
-import 'package:fundro_app/features/products/presentation/widgets/vertical_product_card.dart';
-import 'package:fundro_app/theme/custom_decoration.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:fundro_app/features/home/presentation/screens/widgets/property_card.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -22,72 +7,150 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: HomeAppBar(searchController: TextEditingController()),
+      backgroundColor: Colors.white,
+      appBar: _buildAppBar(),
+      bottomNavigationBar: _buildBottomNav(),
       body: SingleChildScrollView(
+        padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          spacing: Dimensions.height * 0.01,
           children: [
-            HomeSlider(),
-            const Center(child: CategoriesSection()),
-            Divider(),
-            // ProductsGridView(),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Text("Explore Our Collections", style: cairoBold),
+            const SizedBox(height: 10),
+            // بانر التوعية (الأخضر والأصفر)
+            _buildPromoBanner(),
+            const SizedBox(height: 15),
+            // الفلاتر (المتوفرة، الممولة، الخ)
+            _buildFilterRow(),
+            const SizedBox(height: 20),
+            // قائمة العقارات
+            const PropertyCard(
+              title: "فيلا فاخرة في الرياض",
+              price: "2,500,000 ريال",
+              location: "الرياض، حي النرجس",
+              status: "متاح",
+              timeLeft: "6 أيام",
+              imagePath: 'assets/images/home.png',
             ),
-            const CategoriesList(),
-            ProductCard(
-              imageUrl:
-                  "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500",
-              brandName: "brandName",
-              productName: "productName",
-              price: "price",
-              onQuickViewTap: () {
-                Get.to(ProductScreen());
-              },
+            const PropertyCard(
+              title: "شقة عصرية بجدة",
+              price: "1,200,000 ريال",
+              location: "جدة، حي الزهراء",
+              status: "متاح",
+              timeLeft: "12 يوم",
+              imagePath: 'assets/images/home.png',
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [Text("selected_for_you".tr), Text("view_all".tr)],
-              ),
-            ),
-            GetBuilder<ProductController>(
-              builder: (productController) {
-                if (productController.isLoading) {
-                  return const Center(
-                    child: Padding(
-                      padding: EdgeInsets.all(32.0),
-                      child: CircularProgressIndicator(),
-                    ),
-                  );
-                }
-
-                if (productController.products.isEmpty) {
-                  return Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(32.0),
-                      child: Text("no_products".tr),
-                    ),
-                  );
-                }
-
-                return ProductGridView(
-                  products: productController.products,
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                );
-              },
-            ),
-
-            SaleBanner(),
-            NewsletterCard(),
-            // SizedBox(height: Dimensions.height * 0.25),
           ],
         ),
       ),
+    );
+  }
+
+  // الـ AppBar العلوي
+  PreferredSizeWidget _buildAppBar() {
+    return AppBar(
+      backgroundColor: const Color(0xFF1ED794),
+      elevation: 0,
+      centerTitle: true,
+      title: const Text(
+        "العقارات",
+        style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+      ),
+      leading: const Icon(Icons.notifications_none, color: Colors.white),
+      actions: [
+        IconButton(
+          icon: const Icon(Icons.menu, color: Colors.white),
+          onPressed: () {},
+        ),
+      ],
+    );
+  }
+
+  // البانر الترويجي
+  Widget _buildPromoBanner() {
+    return Container(
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: const Color(0xFF006D44),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const Icon(Icons.arrow_back_ios, color: Colors.white, size: 16),
+          const Expanded(
+            child: Text(
+              "نافذة التخارج متوفرة الآن\nاستفد من المساهمين لإتمام عمليات البيع والشراء",
+              textAlign: TextAlign.right,
+              style: TextStyle(color: Colors.white, fontSize: 11),
+            ),
+          ),
+          const SizedBox(width: 10),
+          Container(
+            padding: const EdgeInsets.all(8),
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              shape: BoxShape.circle,
+            ),
+            child: const Icon(Icons.home_work, color: Color(0xFF006D44)),
+          ),
+        ],
+      ),
+    );
+  }
+
+  // صف الفلاتر
+  Widget _buildFilterRow() {
+    final filters = ["المتوفرة 7", "الممولة (692)", "المباعة (23)"];
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: filters
+          .map(
+            (f) => Container(
+              margin: const EdgeInsets.only(left: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+              decoration: BoxDecoration(
+                color: f.contains("المتوفرة")
+                    ? const Color(0xFF1ED794)
+                    : Colors.grey.shade100,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Text(
+                f,
+                style: TextStyle(
+                  fontSize: 12,
+                  color: f.contains("المتوفرة") ? Colors.white : Colors.black54,
+                ),
+              ),
+            ),
+          )
+          .toList(),
+    );
+  }
+
+  // شريط التنقل السفلي
+  Widget _buildBottomNav() {
+    return BottomNavigationBar(
+      type: BottomNavigationBarType.fixed,
+      selectedItemColor: const Color(0xFF1ED794),
+      unselectedItemColor: Colors.grey,
+      currentIndex: 3, // العقارات هي المختارة
+      items: const [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.person_outline),
+          label: "حسابي",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.wallet_outlined),
+          label: "المحفظة",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.explore_outlined),
+          label: "استكشف",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home_outlined),
+          label: "الرئيسية",
+        ),
+      ],
     );
   }
 }

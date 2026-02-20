@@ -3,6 +3,7 @@ import 'package:fundro_app/features/auth/presentation/screens/forget_password_sc
 import 'package:fundro_app/features/auth/presentation/screens/register_screen.dart';
 import 'package:fundro_app/features/auth/presentation/widgets/auth_button.dart';
 import 'package:fundro_app/features/auth/presentation/widgets/custom_auth_button.dart';
+import 'package:fundro_app/features/home/presentation/screens/home_screen.dart';
 import 'package:get/get.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -24,7 +25,7 @@ class LoginScreen extends StatelessWidget {
 
               SizedBox(height: size.height * 0.05),
 
-              const Text(
+              Text(
                 "تسجيل الدخول",
                 style: TextStyle(
                   fontSize: 28,
@@ -69,7 +70,9 @@ class LoginScreen extends StatelessWidget {
                 text: "تسجيل الدخول",
                 color: const Color(0xFF1ED794),
                 textColor: Colors.white,
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(() => const HomeScreen());
+                },
               ),
               const SizedBox(height: 15),
               AuthButton(
