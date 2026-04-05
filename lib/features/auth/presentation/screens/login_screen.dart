@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fundro_app/core/utils/images.dart';
 import 'package:fundro_app/features/auth/presentation/screens/forget_password_screen.dart';
 import 'package:fundro_app/features/auth/presentation/screens/register_screen.dart';
 import 'package:fundro_app/features/auth/presentation/widgets/auth_button.dart';
@@ -109,8 +110,8 @@ class LoginScreen extends StatelessWidget {
                 text: "تسجيل الدخول عبر جوجل",
                 color: Colors.black,
                 textColor: Colors.white,
-                icon: Image.network(
-                  'https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.png',
+                icon: Image.asset(
+                  Images.googleIcon,
                   height: 20,
                 ), // استخدم Asset في تطبيقك
                 onPressed: () {},
