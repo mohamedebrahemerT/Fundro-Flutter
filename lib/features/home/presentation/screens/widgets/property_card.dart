@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:fundro_app/features/home/presentation/screens/widgets/action_btn.dart';
+import 'package:fundro_app/features/home/presentation/screens/widgets/info_row.dart';
+import 'package:fundro_app/features/home/presentation/screens/widgets/status_tag.dart';
+import 'package:fundro_app/features/home/presentation/screens/widgets/time_tag.dart';
+import 'package:fundro_app/features/property/presentation/screens/property_details_screen.dart';
 import 'package:fundro_app/theme/custom_decoration.dart';
 
 class PropertyCard extends StatelessWidget {
@@ -49,7 +54,7 @@ class PropertyCard extends StatelessWidget {
               Positioned(
                 top: 10,
                 right: 10,
-                child: _TimeTag(text: "متبقي $timeLeft"),
+                child: TimeTag(text: "متبقي $timeLeft"),
               ),
             ],
           ),
@@ -73,7 +78,7 @@ class PropertyCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 12),
                 // صف السعر
-                _InfoRow(
+                InfoRow(
                   label: "السعر",
                   child: Text(
                     price,
@@ -86,7 +91,7 @@ class PropertyCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 // صف الموقع
-                _InfoRow(
+                InfoRow(
                   label: "الموقع",
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
@@ -103,16 +108,16 @@ class PropertyCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 // صف التوافر
-                _InfoRow(
+                InfoRow(
                   label: "التوافر",
-                  child: _StatusTag(status: status),
+                  child: StatusTag(status: status),
                 ),
                 const SizedBox(height: 18),
                 // أزرار الإجراءات
                 Row(
                   children: [
                     Expanded(
-                      child: _ActionBtn(
+                      child: ActionBtn(
                         text: "استثمر الآن",
                         isPrimary: true,
                         onTap: () {},
@@ -120,10 +125,18 @@ class PropertyCard extends StatelessWidget {
                     ),
                     const SizedBox(width: 10),
                     Expanded(
-                      child: _ActionBtn(
+                      child: ActionBtn(
                         text: "عرض التفاصيل",
                         isPrimary: false,
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  const PropertyDetailsScreen(),
+                            ),
+                          );
+                        },
                       ),
                     ),
                   ],
@@ -132,124 +145,6 @@ class PropertyCard extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-// صف معلومات مع عنوان (label) وقيمة (child)
-class _InfoRow extends StatelessWidget {
-  final String label;
-  final Widget child;
-
-  const _InfoRow({required this.label, required this.child});
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(label, style: const TextStyle(color: Colors.grey, fontSize: 13)),
-        child,
-      ],
-    );
-  }
-}
-
-// تاغ الوقت المتبقي
-class _TimeTag extends StatelessWidget {
-  final String text;
-  const _TimeTag({required this.text});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-      decoration: BoxDecoration(
-        color: const Color(0xFF1ED794).withOpacity(0.15),
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const Icon(Icons.access_time, size: 14, color: Color(0xFF1ED794)),
-          const SizedBox(width: 5),
-          Text(
-            text,
-            style: const TextStyle(
-              fontSize: 11,
-              fontWeight: FontWeight.bold,
-              color: Color(0xFF1ED794),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-// تاغ الحالة (متاح/قريباً)
-class _StatusTag extends StatelessWidget {
-  final String status;
-  const _StatusTag({required this.status});
-
-  @override
-  Widget build(BuildContext context) {
-    bool isAvailable = status == "متاح";
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 5),
-      decoration: BoxDecoration(
-        color: isAvailable ? const Color(0xFFE8F9F3) : const Color(0xFFFFF9E6),
-        borderRadius: BorderRadius.circular(15),
-      ),
-      child: Text(
-        status,
-        style: TextStyle(
-          fontSize: 12,
-          color: isAvailable
-              ? const Color(0xFF1ED794)
-              : const Color(0xFFFFC107),
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-    );
-  }
-}
-
-// ويدجت الأزرار داخل الكارد
-class _ActionBtn extends StatelessWidget {
-  final String text;
-  final bool isPrimary;
-  final VoidCallback onTap;
-
-  const _ActionBtn({
-    required this.text,
-    required this.isPrimary,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(25),
-      child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 12),
-        decoration: BoxDecoration(
-          color: isPrimary ? const Color(0xFF1ED794) : Colors.white,
-          border: Border.all(color: const Color(0xFF1ED794), width: 1.5),
-          borderRadius: BorderRadius.circular(25),
-        ),
-        child: Center(
-          child: Text(
-            text,
-            style: TextStyle(
-              color: isPrimary ? Colors.white : const Color(0xFF1ED794),
-              fontSize: 14,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
       ),
     );
   }

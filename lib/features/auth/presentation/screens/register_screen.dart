@@ -135,13 +135,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ],
             ),
           ),
-          const Text(
-            "FuDro",
-            style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-              color: Color(0xFF006D44),
-            ),
+          Image.asset(
+            'assets/images/logo.png',
+            // width: Dimensions.width * 0.1,
           ),
         ],
       ),

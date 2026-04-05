@@ -171,14 +171,18 @@ class LoginScreen extends StatelessWidget {
             ),
           ),
           // يمكنك وضع لوجو الشركة هنا
-          const Text(
-            "FuDro",
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: Color(0xFF006D44),
-            ),
+          Image.asset(
+            'assets/images/logo.png',
+            // width: Dimensions.width * 0.1,
           ),
+          // const Text(
+          //   "FuDro",
+          //   style: TextStyle(
+          //     fontSize: 24,
+          //     fontWeight: FontWeight.bold,
+          //     color: Color(0xFF006D44),
+          //   ),
+          // ),
         ],
       ),
     );

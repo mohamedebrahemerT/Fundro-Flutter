@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 <uses-permission android:name="android.permission.INTERNET" />
     <application
-        android:label="brand_deals"
+        android:label="Fundro"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

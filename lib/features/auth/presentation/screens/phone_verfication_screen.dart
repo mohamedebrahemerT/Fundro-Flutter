@@ -15,18 +15,18 @@ class PhoneVerificationScreen extends StatelessWidget {
             children: [
               _buildHeader(), // نستخدم الهيدر الموحد من الشاشات السابقة
               const SizedBox(height: 40),
-              
+
               const Text(
                 "مرحباً بك في فاندرو\nادخل رقم هاتفك",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 22, 
-                  fontWeight: FontWeight.bold, 
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
                   color: Color(0xFF1ED794),
                   height: 1.5,
                 ),
               ),
-              
+
               const SizedBox(height: 15),
               const Text(
                 "سنرسل إليك رموزاً في رسالة نصية حتى نتمكن من تأكيد هويتك",
@@ -40,13 +40,16 @@ class PhoneVerificationScreen extends StatelessWidget {
               const PhoneInputField(),
 
               const SizedBox(height: 40),
-              
+
               // رابط إنشاء الحساب
               TextButton(
                 onPressed: () {},
                 child: const Text(
                   "قم بإنشاء حساب",
-                  style: TextStyle(color: Color(0xFF1ED794), fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                    color: Color(0xFF1ED794),
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
 
@@ -59,7 +62,7 @@ class PhoneVerificationScreen extends StatelessWidget {
               ),
 
               const Spacer(),
-              
+
               // النقاط السفلية (Indicator)
               _buildDotsIndicator(0),
               const SizedBox(height: 30),
@@ -74,15 +77,20 @@ class PhoneVerificationScreen extends StatelessWidget {
   Widget _buildDotsIndicator(int activeIndex) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: List.generate(5, (index) => Container(
-        margin: const EdgeInsets.symmetric(horizontal: 4),
-        width: 10,
-        height: 10,
-        decoration: BoxDecoration(
-          color: index == activeIndex ? const Color(0xFF1ED794) : Colors.grey.shade200,
-          shape: BoxShape.circle,
+      children: List.generate(
+        5,
+        (index) => Container(
+          margin: const EdgeInsets.symmetric(horizontal: 4),
+          width: 10,
+          height: 10,
+          decoration: BoxDecoration(
+            color: index == activeIndex
+                ? const Color(0xFF1ED794)
+                : Colors.grey.shade200,
+            shape: BoxShape.circle,
+          ),
         ),
-      )),
+      ),
     );
   }
 
@@ -102,11 +110,17 @@ class PhoneVerificationScreen extends StatelessWidget {
               children: [
                 Icon(Icons.language, size: 16, color: Color(0xFF1ED794)),
                 SizedBox(width: 5),
-                Text("تغيير اللغة", style: TextStyle(color: Color(0xFF1ED794), fontSize: 13)),
+                Text(
+                  "تغيير اللغة",
+                  style: TextStyle(color: Color(0xFF1ED794), fontSize: 13),
+                ),
               ],
             ),
           ),
-          const Text("FuDro", style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Color(0xFF006D44))),
+          Image.asset(
+            'assets/images/logo.png',
+            // width: Dimensions.width * 0.1,
+          ),
         ],
       ),
     );
