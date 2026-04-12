@@ -53,7 +53,19 @@ class Images {
   static const String arabic = 'assets/images/ar.png';
   static const String english = 'assets/images/en.png';
   static const String cod = 'assets/images/cod.png';
-  static const String visa = 'assets/images/visa.png';
+  static const String visa = 'assets/images/visa.webp';
+  static const String payMethods = 'assets/images/pay_methods.png';
+  static const String lock = 'assets/images/lock.png';
   static const String wallet = 'assets/images/wallet.png';
   static const String notFound = 'assets/images/not_found_icon.png';
+  static const String emptyNotifications = 'assets/images/empty_notifications.png';
+  static const String info = 'assets/images/info.png';
+  static const String payMoney = 'assets/images/pay_money.png';
+  static const String protect = 'assets/images/protect.png';
+  static const String statistics = 'assets/images/statistics.png';
+  static const String onBoardingNew1 = 'assets/images/onboarding1.png';
+  static const String onBoardingNew2 = 'assets/images/onboarding2.png';
+  static const String onBoardingNew3 = 'assets/images/onboarding3.png';
+  static const String onBoardingNew4 = 'assets/images/onboarding4.png';
+  static const String onBoardingNew5 = 'assets/images/onboarding5.png';
 }

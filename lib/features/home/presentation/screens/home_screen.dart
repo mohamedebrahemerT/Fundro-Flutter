@@ -15,6 +15,8 @@ import 'package:fundro_app/features/home/presentation/screens/widgets/investment
 import 'package:fundro_app/features/home/presentation/screens/widgets/insight_banners_scroll.dart';
 import 'package:fundro_app/features/home/presentation/screens/exit_window_screen.dart';
 import 'package:fundro_app/features/home/presentation/screens/account_setup_screen.dart';
+import 'package:fundro_app/features/home/presentation/screens/widgets/rewards_banner_carousel.dart';
+import 'package:fundro_app/features/home/presentation/screens/widgets/wallet_sections.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -124,12 +126,30 @@ class _HomeScreenState extends State<HomeScreen> {
       case 2:
         return _buildPortfolioContent();
       case 1:
-        return const Center(child: Text("المحفظة (قريباً)"));
+        return _buildWalletContent();
       case 0:
         return const Center(child: Text("حسابي (قريباً)"));
       default:
         return _buildHomeContent();
     }
+  }
+
+  Widget _buildWalletContent() {
+    return const SingleChildScrollView(
+      child: Column(
+        children: [
+          SizedBox(height: 20),
+          RewardsBannerCarousel(),
+          SizedBox(height: 20),
+          HomeActionRow(),
+          const WalletPaymentCard(),
+          const TransactionSection(),
+          const SecurityTrustCard(),
+          const AcademyCarousel(),
+          const SizedBox(height: 30),
+        ],
+      ),
+    );
   }
 
   Widget _buildPortfolioContent() {
