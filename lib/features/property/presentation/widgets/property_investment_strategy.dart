@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fundro_app/core/utils/images.dart';
 import 'property_strategy_item.dart';
 import '../screens/property_strategy_details_screen.dart';
 
@@ -10,7 +11,7 @@ class PropertyInvestmentStrategy extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        const Padding(
+        Padding(
           padding: EdgeInsets.symmetric(vertical: 20),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -24,7 +25,8 @@ class PropertyInvestmentStrategy extends StatelessWidget {
                 ),
               ),
               SizedBox(width: 12),
-              Icon(Icons.bolt_outlined, size: 24, color: Color(0xFF333333)),
+              Image.asset(Images.statigy, width: 24, height: 24),
+              // Icon(Icons.bolt_outlined, size: 24, color: Color(0xFF333333)),
             ],
           ),
         ),
@@ -48,7 +50,7 @@ class PropertyInvestmentStrategy extends StatelessWidget {
           title: "مطور عقاري موثوق",
           subtitle:
               "تم إنشاء المشروع بواسطة إحدى أبرز شركات التطوير العقاري الموثوقين في دبي",
-          icon: Icons.business_outlined,
+          imageIcon: Images.develops,
         ),
         GestureDetector(
           onTap: () {
@@ -93,7 +95,13 @@ class PropertyInvestmentStrategy extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 15),
-          const Icon(Icons.bolt_outlined, color: Color(0xFF1ED794), size: 24),
+          Image.asset(
+            Images.statigy,
+            width: 24,
+            height: 24,
+            color: Color(0xFF00A269),
+          ),
+          // const Icon(Icons.bolt_outlined, color: Color(0xFF1ED794), size: 24),
         ],
       ),
     );

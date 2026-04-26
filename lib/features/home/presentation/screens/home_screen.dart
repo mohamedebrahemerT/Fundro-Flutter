@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:fundro_app/core/utils/images.dart';
 import 'package:fundro_app/features/home/domain/models/property_model.dart';
+import 'package:fundro_app/features/home/presentation/screens/notifications_screen.dart';
 import 'package:fundro_app/features/home/presentation/screens/widgets/app_bar_home.dart';
 import 'package:fundro_app/features/home/presentation/screens/widgets/filter_row.dart';
 import 'package:fundro_app/features/home/presentation/screens/widgets/property_card.dart';
 import 'package:fundro_app/features/home/presentation/screens/investment_center_screen.dart';
-import 'package:fundro_app/features/home/presentation/screens/widgets/promo_banner.dart';
+import 'package:fundro_app/features/home/presentation/screens/widgets/home_banners_section.dart';
 import 'package:fundro_app/features/home/presentation/screens/widgets/wallet_summary.dart';
+import 'package:fundro_app/features/home/presentation/screens/widgets/home_header.dart';
 import 'package:fundro_app/features/home/presentation/screens/widgets/home_action_row.dart';
 import 'package:fundro_app/features/home/presentation/screens/widgets/earn_with_fundro_card.dart';
 import 'package:fundro_app/features/home/presentation/screens/widgets/start_journey_banner.dart';
@@ -113,7 +115,11 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: _currentIndex == 3 ? const AppBarHome() : null,
+      appBar: _currentIndex == 3
+          ? const AppBarHome(title: "العقارات")
+          : _currentIndex == 1
+              ? const AppBarHome(title: "المحفظة")
+              : null,
       bottomNavigationBar: _buildBottomNav(),
       body: _buildBody(),
     );
@@ -135,10 +141,30 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildWalletContent() {
-    return const SingleChildScrollView(
+    return SingleChildScrollView(
+      padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Column(
         children: [
-          SizedBox(height: 20),
+          const SizedBox(height: 15),
+          HomeHeader(
+            onMenuTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const InvestmentCenterScreen(),
+                ),
+              );
+            },
+            onNotificationTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const NotificationsScreen(),
+                ),
+              );
+            },
+          ),
+          const SizedBox(height: 20),
           RewardsBannerCarousel(),
           SizedBox(height: 20),
           HomeActionRow(),
@@ -228,8 +254,27 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Column(
         children: [
           const SizedBox(height: 15),
-          PromoBanner(
-            onTap: () {
+          HomeHeader(
+            onMenuTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const InvestmentCenterScreen(),
+                ),
+              );
+            },
+            onNotificationTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const NotificationsScreen(),
+                ),
+              );
+            },
+          ),
+
+          HomeBannersSection(
+            onExitWindowTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -237,10 +282,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               );
             },
-          ),
-          const SizedBox(height: 6),
-          PromoBanner(
-            onTap: () {
+            onAccountSetupTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -250,6 +292,7 @@ class _HomeScreenState extends State<HomeScreen> {
             },
           ),
           const SizedBox(height: 20),
+
           // الفلاتر التفاعلية
           FilterRow(
             selectedFilter: _selectedFilter,
@@ -297,34 +340,72 @@ class _HomeScreenState extends State<HomeScreen> {
 
   // شريط التنقل السفلي
   Widget _buildBottomNav() {
-    return BottomNavigationBar(
-      type: BottomNavigationBarType.fixed,
-      selectedItemColor: const Color(0xFF1ED794),
-      unselectedItemColor: Colors.grey,
-      currentIndex: _currentIndex,
-      onTap: (index) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(25),
+          topRight: Radius.circular(25),
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            blurRadius: 20,
+            offset: const Offset(0, -5),
+          ),
+        ],
+      ),
+      child: SafeArea(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            _buildNavItem(0, Icons.person_outline, "حسابي"),
+            _buildNavItem(1, Icons.wallet_outlined, "المحفظة"),
+            _buildNavItem(2, Icons.pie_chart_outline, "الملف"),
+            _buildNavItem(3, Icons.home_outlined, "الرئيسية"),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildNavItem(int index, IconData icon, String label) {
+    bool isSelected = _currentIndex == index;
+    return GestureDetector(
+      onTap: () {
         setState(() {
           _currentIndex = index;
         });
       },
-      items: const [
-        BottomNavigationBarItem(
-          icon: Icon(Icons.person_outline),
-          label: "حسابي",
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 300),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+        decoration: BoxDecoration(
+          color: isSelected ? const Color(0xFFFCF8E8) : Colors.transparent,
+          borderRadius: BorderRadius.circular(20),
         ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.wallet_outlined),
-          label: "المحفظة",
+        child: Row(
+          children: [
+            Icon(
+              icon,
+              color: isSelected ? const Color(0xFF1ED794) : Colors.black45,
+              size: 26,
+            ),
+            if (isSelected) ...[
+              const SizedBox(width: 8),
+              Text(
+                label,
+                style: const TextStyle(
+                  color: Color(0xFF1ED794),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14,
+                ),
+              ),
+            ],
+          ],
         ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.explore_outlined),
-          label: "الملف",
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.home_outlined),
-          label: "الرئيسية",
-        ),
-      ],
+      ),
     );
   }
 }

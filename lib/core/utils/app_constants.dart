@@ -33,11 +33,12 @@ class AppConstants {
 
   static const String walletUrl = 'api/talabaty/wallet';
   static const String walletStatisticsUrl = 'api/talabaty/wallet/statistics';
-  
+
   // Stores
   static const String storeListUrl = 'api/restaurants';
   static const String categoriesModuleListUrl = 'api/categories';
-  static const String categoriesFeaturedModuleListUrl = 'api/categories/featured';
+  static const String categoriesFeaturedModuleListUrl =
+      'api/categories/featured';
   static const String subCategoriesListUrl = 'api/sub-categories';
 
   // Items
@@ -69,7 +70,8 @@ class AppConstants {
   static const String updateAddressUrl = 'api/talabaty/addresses/';
   static const String deleteAddressUrl = 'api/talabaty/addresses/';
   static const String policiesUrl = 'api/talabaty/policies';
-  static const String calculateDeliveryPriceUri = 'api/talabaty/calculate-delivery';
+  static const String calculateDeliveryPriceUri =
+      'api/talabaty/calculate-delivery';
 
   static const String fontFamily = 'Cairo';
 
@@ -87,7 +89,7 @@ class AppConstants {
   static const String longitude = 'longitude';
   static const String cookiesManagement = 'cookies_management';
   static List<LanguageModel> languages = [
-      LanguageModel(
+    LanguageModel(
       code: 'en',
       countryCode: 'US',
       name: 'English',
@@ -99,7 +101,6 @@ class AppConstants {
       name: 'العربية',
       image: Images.arabic,
     ),
-  
   ];
   static List<String> settings = [
     'account_info',
@@ -112,10 +113,7 @@ class AppConstants {
     'log_out',
     // 'delete_account',
   ];
-  static List<String> profileSettings = [
-    'orders',
-    'my_wallet',
-  ];
+  static List<String> profileSettings = ['orders', 'my_wallet'];
   static List<String> geustSettings = [
     'notifications',
     'language',
@@ -151,33 +149,37 @@ class AppConstants {
   static const String userAddress = 'talabaty_user_address';
 
   // قائمة البيانات بناءً على الصور المرفقة
-static List<OnboardingModel> onboardingData = [
-  OnboardingModel(
-    image: 'assets/images/onboarding1.png',
-    title: 'أحدث طريقة للاستثمار في العقارات',
-    description: '', 
-  ),
-  OnboardingModel(
-    image: 'assets/images/onboarding2.png',
-    title: 'احصل على وصول حصري لصناديق الاستثمار العقاري',
-    description: 'استثمر في صناديق مدارة باحترافية وتوفر عوائد جذابة وإمكانية نمو رأس المال.',
-  ),
-  OnboardingModel(
-    image: 'assets/images/onboarding3.png',
-    title: 'احصل علي دخل ثابت بشكل مستمر',
-    description: 'استمتع بدخلك الإيجاري فور استحقاقة حيث يودع مباشرة في محفظة فاندرو الخاصة بك',
-  ),
-  OnboardingModel(
-    image: 'assets/images/onboarding4.png',
-    title: 'ادفع با ستخدام بطاقة الائتمان أو الخصم وأكثر',
-    description: 'احصل فورا علي حصة في الصنادية التي تفضلها ابتداء من 500 sar ومع خيارات دفع مرنة تناسب اختياجاتك',
-  ),
-  OnboardingModel(
-    image: 'assets/images/onboarding5.png',
-    title: 'مدعومون من قبل الأفضل في المجال',
-    description: 'استثمر في صناديق مدارة باحترافية وتوفر عوائد جذابة وإمكانية نمو راس المال.',
-  ),
-];
+  static List<OnboardingModel> onboardingData = [
+    OnboardingModel(
+      image: 'assets/images/onboarding1.png',
+      title: 'أحدث طريقة للاستثمار في العقارات',
+      description: '',
+    ),
+    OnboardingModel(
+      image: 'assets/images/onboarding2.png',
+      title: 'احصل على وصول حصري لصناديق الاستثمار العقاري',
+      description:
+          'استثمر في صناديق مدارة باحترافية وتوفر عوائد جذابة وإمكانية نمو رأس المال.',
+    ),
+    OnboardingModel(
+      image: 'assets/images/onboarding3.png',
+      title: 'احصل علي دخل ثابت بشكل مستمر',
+      description:
+          'استمتع بدخلك الإيجاري فور استحقاقة حيث يودع مباشرة في محفظة فاندرو الخاصة بك',
+    ),
+    OnboardingModel(
+      image: 'assets/images/onboarding4.png',
+      title: 'ادفع با ستخدام بطاقة الائتمان أو الخصم وأكثر',
+      description:
+          'احصل فورا علي حصة في الصنادية التي تفضلها ابتداء من 500 sar ومع خيارات دفع مرنة تناسب اختياجاتك',
+    ),
+    OnboardingModel(
+      image: 'assets/images/onboarding5.png',
+      title: 'مدعومون من قبل الأفضل في المجال',
+      description:
+          'استثمر في صناديق مدارة باحترافية وتوفر عوائد جذابة وإمكانية نمو راس المال.',
+    ),
+  ];
 }
 
 // class DataStatic {
@@ -203,7 +205,6 @@ static List<OnboardingModel> onboardingData = [
 //     ),
 //   ];
 
-  
 //   static List<String> profile = [
 //     'account_info',
 //     'saved_address',

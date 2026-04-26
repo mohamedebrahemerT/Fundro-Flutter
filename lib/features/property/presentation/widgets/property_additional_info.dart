@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fundro_app/core/utils/images.dart';
 
 class PropertyAdditionalInfo extends StatelessWidget {
   const PropertyAdditionalInfo({super.key});
@@ -114,8 +115,8 @@ class PropertyAdditionalInfo extends StatelessWidget {
                   const SizedBox(width: 15),
                   ClipRRect(
                     borderRadius: BorderRadius.circular(4),
-                    child: Image.network(
-                      "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Flag_of_the_United_Arab_Emirates.svg/1200px-Flag_of_the_United_Arab_Emirates.svg.png",
+                    child: Image.asset(
+                      Images.dubai,
                       width: 32,
                       fit: BoxFit.contain,
                     ),

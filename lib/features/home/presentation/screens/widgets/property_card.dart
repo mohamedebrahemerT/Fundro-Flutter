@@ -73,6 +73,7 @@ class PropertyCard extends StatelessWidget {
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
+                      fontFamily: 'Cairo',
                     ),
                   ),
                 ),
@@ -86,6 +87,7 @@ class PropertyCard extends StatelessWidget {
                       color: Colors.red,
                       fontWeight: FontWeight.bold,
                       fontSize: 14,
+                      fontFamily: 'Cairo',
                     ),
                   ),
                 ),
@@ -96,7 +98,7 @@ class PropertyCard extends StatelessWidget {
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text(location, style: const TextStyle(fontSize: 13)),
+                      Text(location, style: const TextStyle(fontSize: 13, fontFamily: 'Cairo')),
                       const SizedBox(width: 4),
                       const Icon(
                         Icons.location_on,

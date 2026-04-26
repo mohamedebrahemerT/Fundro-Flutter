@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fundro_app/core/utils/images.dart';
 import 'package:fundro_app/features/auth/presentation/screens/phone_verfication_screen.dart';
 import 'package:fundro_app/features/auth/presentation/widgets/custom_auth_button.dart';
 import 'package:fundro_app/features/auth/presentation/widgets/custom_auth_field.dart';
@@ -39,7 +40,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               const Text(
                 "انضم إلى آلاف الملاك الذين يديرون\nعقاراتهم بكفاءة",
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 15, color: Colors.grey, height: 1.5),
+                style: TextStyle(fontSize: 16, color: Colors.grey, height: 1.5),
               ),
 
               const SizedBox(height: 30),
@@ -47,11 +48,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
               // قائمة الحقول
               const CustomAuthField(
                 hint: "أدخل الاسم الكامل",
-                prefixIcon: Icons.person_outline,
+                prefixIcon: Images.fullName,
               ),
               const CustomAuthField(
                 hint: "أدخل بريدك الإلكتروني أو رقم هاتفك",
-                prefixIcon: Icons.email_outlined,
+                prefixIcon: Images.email,
               ),
               const CustomAuthField(
                 hint: "أدخل نوع الحساب",
@@ -64,7 +65,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
               const CustomAuthField(
                 hint: "أدخل كلمة المرور",
-                prefixIcon: Icons.lock_outline,
+                prefixIcon: Images.lockIcon,
                 isPassword: true,
                 suffixIconData: Icons.visibility_off_outlined,
               ),
@@ -75,7 +76,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 children: [
                   const Text(
                     "أوافق على شروط الخدمة وسياسة الخصوصية",
-                    style: TextStyle(color: Color(0xFF1ED794), fontSize: 13),
+                    style: TextStyle(color: Color(0xFF00A269), fontSize: 16),
                   ),
                   Checkbox(
                     value: _agreeToTerms,
@@ -93,7 +94,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
               // زر تسجيل الحساب (لاحظ استخدام اللون الأخضر الداكن كما في الصورة)
               AuthButton(
                 text: "تسجيل الحساب",
-                color: const Color(0xFF006D44),
+                gradient: const LinearGradient(
+                  colors: [Color(0xFF02C780), Color(0xFF006746)],
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                ),
                 textColor: Colors.white,
                 onPressed: () {
                   Get.to(() => const PhoneVerificationScreen());
@@ -149,7 +154,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return const Text.rich(
       TextSpan(
         text: "بالضغط على تسجيل الدخول فإنك توافق على ",
-        style: TextStyle(color: Colors.grey, fontSize: 12),
+        style: TextStyle(color: Colors.grey, fontSize: 14),
         children: [
           TextSpan(
             text: "الشروط والأحكام\n",

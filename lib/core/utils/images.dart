@@ -1,7 +1,12 @@
 class Images {
   static const String logo = 'assets/images/logo.png';
   static const String logoRounded = 'assets/images/logo_rounded.png';
+  static const String logoWhite = 'assets/images/logo_white.png';
   static const String chart = 'assets/images/chart.png';
+  static const String fingerPrintBackground = 'assets/images/fingerprint_background.png';
+  static const String notificationBackground = 'assets/images/notification_background.png';
+  static const String noti = 'assets/images/noti.png';
+  static const String homeBanner = 'assets/images/home_banner.png';
   static const String googleIcon = 'assets/images/google.png';
   static const String historyLock = 'assets/images/history_lock.png';
   static const String circlePerson = 'assets/images/circle_person.png';
@@ -68,4 +73,30 @@ class Images {
   static const String onBoardingNew3 = 'assets/images/onboarding3.png';
   static const String onBoardingNew4 = 'assets/images/onboarding4.png';
   static const String onBoardingNew5 = 'assets/images/onboarding5.png';
+  static const String noTransactions = 'assets/images/no_transaction.png';
+
+  // Icons from assets/icons
+  static const String email = 'assets/icons/email.png';
+  static const String fullName = 'assets/icons/full_name.png';
+  static const String lockIcon = 'assets/icons/lock.png';
+  static const String language = 'assets/icons/lang.png';
+  static const String fingerPrint = 'assets/icons/finger_print.png';
+  static const String swap = 'assets/icons/swap.png';
+  static const String faceDetection = 'assets/icons/face_detection.png';
+  static const String bedIcon = 'assets/icons/bed.png';
+  static const String fileIcon = 'assets/icons/file.png';
+  static const String villaIcon = 'assets/icons/villa.png';
+  static const String wcIcon = 'assets/icons/wc.png';
+  static const String verfication = 'assets/icons/verfication.png';
+  static const String statigy = 'assets/icons/statigy.png';
+  static const String develops = 'assets/icons/develops.png';
+  static const String calculate = 'assets/icons/calculate.png';
+  static const String mic ='assets/icons/mic.png';
+  static const String key  ='assets/icons/key.png';
+  static const String protectIcon  ='assets/icons/protect.png';
+  static const String moneyIcon  ='assets/icons/money.png';
+  static const String depositeIcon = 'assets/icons/deposite.png';
+  static const String investIcon = 'assets/icons/invest.png';
+  static const String settingsIcon = 'assets/icons/settings.png';
+  static const String withdrawIcon = 'assets/icons/withdraw.png';
 }

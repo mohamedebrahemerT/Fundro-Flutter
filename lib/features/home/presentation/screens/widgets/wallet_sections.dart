@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fundro_app/core/utils/images.dart';
 import 'package:fundro_app/features/home/presentation/screens/security_info_screen.dart';
+import 'package:fundro_app/features/home/presentation/screens/finance_and_returns_screen.dart';
+import 'package:fundro_app/features/home/presentation/screens/payment_methods_screen.dart';
+import 'package:get/get.dart';
 
 class WalletPaymentCard extends StatelessWidget {
   const WalletPaymentCard({super.key});
@@ -13,6 +16,7 @@ class WalletPaymentCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: Colors.black.withOpacity(0.1), width: 1.5),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.05),
@@ -58,22 +62,37 @@ class WalletPaymentCard extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 20),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            decoration: BoxDecoration(
-              color: const Color(0xFFFFD144),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: const Row(
-              mainAxisSize: MainAxisSize.min,
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const PaymentMethodsScreen(),
+                ),
+              );
+            },
+            child: Column(
+              spacing: 5,
               children: [
-                Icon(Icons.add_circle_outline, size: 18),
-                SizedBox(width: 8),
-                Text(
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 10,
+                  ),
+                  width: 80,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFFFD144),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Image.asset(Images.withdrawIcon, height: 35),
+                ),
+                const Text(
                   "أضف طريقة الدفع",
                   style: TextStyle(
-                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
                     fontFamily: 'Cairo',
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ],
@@ -105,7 +124,7 @@ class _TransactionSectionState extends State<TransactionSection> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         const Padding(
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -203,19 +222,16 @@ class _TransactionSectionState extends State<TransactionSection> {
           Center(
             child: Column(
               children: [
-                Icon(
-                  Icons.receipt_long_outlined,
-                  size: 60,
-                  color: Colors.grey.shade300,
-                ),
+                Image.asset(Images.noTransactions),
                 const SizedBox(height: 15),
                 const Text(
                   "لا توجد معاملات في هذه المرحلة\nحتى الآن",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 16,
-                    color: Colors.grey,
+                    color: Color(0xFF646B76),
                     fontFamily: 'Cairo',
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ],
@@ -343,20 +359,30 @@ class SecurityTrustCard extends StatelessWidget {
           ),
           _buildTextRow("يتم دفع الإيجار شهرياً في محفظتك", Images.payMoney),
           const Divider(height: 30),
-          Row(
-            children: [
-              const Icon(Icons.arrow_back_ios, size: 14, color: Colors.grey),
-              const Spacer(),
-              const Text(
-                "قراءة عن الأمن لدينا",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Cairo',
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const SecurityInfoScreen(),
                 ),
-              ),
-              const SizedBox(width: 10),
-              Image.asset(Images.info),
-            ],
+              );
+            },
+            child: Row(
+              children: [
+                const Icon(Icons.arrow_back_ios, size: 14, color: Colors.grey),
+                const Spacer(),
+                const Text(
+                  "قراءة عن الأمن لدينا",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Cairo',
+                  ),
+                ),
+                const SizedBox(width: 10),
+                Image.asset(Images.info),
+              ],
+            ),
           ),
         ],
       ),
@@ -471,8 +497,45 @@ class AcademyCarousel extends StatelessWidget {
               _buildGreenCard(
                 "كيف تحمي سلطة دبي\nللخدمات المالية أموالي؟",
                 const Color(0xFF006D44),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SecurityInfoScreen(),
+                    ),
+                  );
+                },
               ),
-              _buildGreenCard("ماذا يحدث عند\nفندرو؟", const Color(0xFF1ED794)),
+              _buildGreenCard(
+                "كيف تحمي سلطة دبي\nللخدمات المالية أموالي؟",
+                const Color(0xFF006D44),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SecurityInfoScreen(),
+                    ),
+                  );
+                },
+              ),
+              _buildGreenCard(
+                "ماذا يحدث إذاأفلست شركة فاندرو؟",
+                const Color(0xFF1ED794),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SecurityInfoScreen(),
+                    ),
+                  );
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(
+                  //     builder: (context) => const FinanceAndReturnsScreen(),
+                  //   ),
+                  // );
+                },
+              ),
             ],
           ),
         ),
@@ -567,38 +630,41 @@ class AcademyCarousel extends StatelessWidget {
           const SizedBox(width: 15),
           Container(height: 40, width: 1, color: Colors.grey.withOpacity(0.2)),
           const SizedBox(width: 15),
-          Image.asset(Images.logoRounded, height: 45),
+          Image.asset(Images.logoWhite, height: 45),
         ],
       ),
     );
   }
 
-  Widget _buildGreenCard(String title, Color color) {
-    return Container(
-      width: 250,
-      margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(15),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          Expanded(
-            child: Text(
-              title,
-              textAlign: TextAlign.right,
-              style: const TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 14,
-                fontFamily: 'Cairo',
+  Widget _buildGreenCard(String title, Color color, {VoidCallback? onTap}) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: 250,
+        margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+        padding: const EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          color: color,
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Expanded(
+              child: Text(
+                title,
+                textAlign: TextAlign.right,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14,
+                  fontFamily: 'Cairo',
+                ),
               ),
             ),
-          ),
-          const Icon(Icons.arrow_back_ios, color: Colors.white, size: 20),
-        ],
+            const Icon(Icons.arrow_back_ios, color: Colors.white, size: 20),
+          ],
+        ),
       ),
     );
   }

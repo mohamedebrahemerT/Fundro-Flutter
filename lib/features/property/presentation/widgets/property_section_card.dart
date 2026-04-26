@@ -20,9 +20,9 @@ class PropertySectionCard extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       margin: const EdgeInsets.only(bottom: 15),
       decoration: BoxDecoration(
-        color: const Color(0xFFF8FDFB), // خلفية فاتحة جداً
+        // color: const Color(0xFFF8FDFB), // خلفية فاتحة جداً
         borderRadius: BorderRadius.circular(15),
-        border: Border.all(color: const Color(0xFF1ED794).withOpacity(0.3)),
+        // border: Border.all(color: const Color(0xFF1ED794).withOpacity(0.3)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
@@ -36,13 +36,14 @@ class PropertySectionCard extends StatelessWidget {
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
+                    fontFamily: 'Cairo',
                   ),
                 ),
                 const SizedBox(width: 8),
                 Icon(icon, color: Colors.black87),
               ],
             ),
-            const Divider(height: 25),
+            // const Divider(height: 25),
           ],
           child,
         ],

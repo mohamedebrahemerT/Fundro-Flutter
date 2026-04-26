@@ -17,21 +17,22 @@ class ActionBtn extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(25),
+      borderRadius: BorderRadius.circular(20),
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 12),
         decoration: BoxDecoration(
-          color: isPrimary ? const Color(0xFF1ED794) : Colors.white,
-          border: Border.all(color: const Color(0xFF1ED794), width: 1.5),
-          borderRadius: BorderRadius.circular(25),
+          color: isPrimary ? const Color(0xFF00A269) : Colors.white,
+          border: Border.all(color: const Color(0xFF00A269), width: 1.5),
+          borderRadius: BorderRadius.circular(20),
         ),
         child: Center(
           child: Text(
             text,
             style: TextStyle(
-              color: isPrimary ? Colors.white : const Color(0xFF1ED794),
+              color: isPrimary ? Colors.white : const Color(0xFF00A269),
               fontSize: 14,
               fontWeight: FontWeight.bold,
+              fontFamily: 'Cairo',
             ),
           ),
         ),

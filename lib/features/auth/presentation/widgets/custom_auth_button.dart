@@ -3,35 +3,45 @@ import 'package:flutter/material.dart';
 class AuthButton extends StatelessWidget {
   final String text;
   final Color color;
+  final Gradient? gradient;
   final Color textColor;
   final Color? borderColor;
   final Widget? icon;
+  final double? fontSize;
   final VoidCallback onPressed;
 
   const AuthButton({
     super.key,
     required this.text,
-    required this.color,
+    this.color = const Color(0xFF1ED794),
+    this.gradient,
     required this.textColor,
     this.borderColor,
     this.icon,
+    this.fontSize,
     required this.onPressed,
   });
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       width: double.infinity,
       height: 55,
+      decoration: BoxDecoration(
+        color: gradient == null ? color : null,
+        gradient: gradient,
+        borderRadius: BorderRadius.circular(10),
+        border: borderColor != null
+            ? Border.all(color: borderColor!)
+            : null,
+      ),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: color,
+          backgroundColor: Colors.transparent,
+          shadowColor: Colors.transparent,
           elevation: 0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
-            side: borderColor != null
-                ? BorderSide(color: borderColor!)
-                : BorderSide.none,
           ),
         ),
         onPressed: onPressed,
@@ -43,8 +53,9 @@ class AuthButton extends StatelessWidget {
               text,
               style: TextStyle(
                 color: textColor,
-                fontSize: 18,
+                fontSize: fontSize ?? 18,
                 fontWeight: FontWeight.bold,
+                fontFamily: 'Cairo',
               ),
             ),
           ],

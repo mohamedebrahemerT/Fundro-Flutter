@@ -73,7 +73,7 @@ class PropertyMarketNews extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 15),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: const Color(0xFFF8F9FA),
+        // color: const Color(0xFFF8F9FA),
         borderRadius: BorderRadius.circular(15),
       ),
       child: Column(
@@ -84,7 +84,7 @@ class PropertyMarketNews extends StatelessWidget {
             style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 16,
-              color: Color(0xFF333333),
+              color: Colors.black,
             ),
           ),
           const SizedBox(height: 8),
@@ -92,7 +92,7 @@ class PropertyMarketNews extends StatelessWidget {
             content,
             style: const TextStyle(
               color: Color(0xFF9E9E9E),
-              fontSize: 13,
+              fontSize: 14,
               height: 1.5,
             ),
             textAlign: TextAlign.right,

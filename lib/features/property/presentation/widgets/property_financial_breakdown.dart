@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fundro_app/core/utils/images.dart';
 
 class PropertyFinancialBreakdown extends StatefulWidget {
   const PropertyFinancialBreakdown({super.key});
@@ -18,17 +19,18 @@ class _PropertyFinancialBreakdownState
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        const Padding(
-          padding: EdgeInsets.symmetric(vertical: 20),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 20),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Text(
+              const Text(
                 "التفاصيل المالية",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
-                  color: Color(0xFF333333),
+                  color: Color(0xFF1D2126),
+                  fontFamily: 'Cairo',
                 ),
               ),
               SizedBox(width: 12),
@@ -43,10 +45,10 @@ class _PropertyFinancialBreakdownState
 
         // Section 1: Investment Value
         _buildBreakdownCard(
-          title: "قيمة التواصل", // Communication Value / Total Price
+          title: "قيمة التواصل",
           totalValue: "AED 2.244.236",
           isExpanded: _isInvestmentExpanded,
-          icon: Icons.home_work_outlined,
+          imageIcon: Images.moneyIcon,
           onToggle: () =>
               setState(() => _isInvestmentExpanded = !_isInvestmentExpanded),
           items: [
@@ -65,7 +67,7 @@ class _PropertyFinancialBreakdownState
           title: "الدخل السنوي",
           totalValue: "AED 56.882",
           isExpanded: _isIncomeExpanded,
-          icon: Icons.account_balance_wallet_outlined,
+          imageIcon: Images.wallet,
           onToggle: () =>
               setState(() => _isIncomeExpanded = !_isIncomeExpanded),
           items: [
@@ -88,7 +90,11 @@ class _PropertyFinancialBreakdownState
           ),
           child: const Text(
             "هذا تقدير للسنة الأولى من الملكية",
-            style: TextStyle(color: Color(0xFF9E9E9E), fontSize: 14),
+            style: TextStyle(
+              color: Color(0xFFACAFB5),
+              fontSize: 14,
+              fontFamily: 'Cairo',
+            ),
             textAlign: TextAlign.center,
           ),
         ),
@@ -101,7 +107,8 @@ class _PropertyFinancialBreakdownState
     required String title,
     required String totalValue,
     required bool isExpanded,
-    required IconData icon,
+    IconData? icon,
+    String? imageIcon,
     required VoidCallback onToggle,
     required List<Map<String, String>> items,
     required String finalLabel,
@@ -122,16 +129,17 @@ class _PropertyFinancialBreakdownState
                 Text(
                   totalValue,
                   style: const TextStyle(
-                    color: Color(0xFF1ED794),
+                    color: Color(0xFF00A269),
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
+                    fontFamily: 'Cairo',
                   ),
                 ),
                 const SizedBox(width: 8),
                 const Icon(
                   Icons.info_outline,
                   size: 18,
-                  color: Color(0xFF1ED794),
+                  color: Color(0xFF00A269),
                 ),
                 const Spacer(),
                 Column(
@@ -141,8 +149,9 @@ class _PropertyFinancialBreakdownState
                       title,
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                        color: Color(0xFF333333),
+                        fontSize: 17,
+                        color: Color(0xFF1D2126),
+                        fontFamily: 'Cairo',
                       ),
                     ),
                     GestureDetector(
@@ -154,15 +163,16 @@ class _PropertyFinancialBreakdownState
                             isExpanded
                                 ? Icons.keyboard_arrow_up
                                 : Icons.keyboard_arrow_down,
-                            color: const Color(0xFF1ED794),
+                            color: const Color(0xFF00A269),
                             size: 20,
                           ),
                           const SizedBox(width: 4),
                           Text(
                             isExpanded ? "إخفاء التفاصيل" : "إظهار التفاصيل",
                             style: const TextStyle(
-                              color: Color(0xFF1ED794),
+                              color: Color(0xFF00A269),
                               fontSize: 14,
+                              fontFamily: 'Cairo',
                             ),
                           ),
                         ],
@@ -170,15 +180,23 @@ class _PropertyFinancialBreakdownState
                     ),
                   ],
                 ),
-                const SizedBox(width: 15),
+                const SizedBox(width: 12),
                 Container(
                   width: 48,
                   height: 48,
                   decoration: BoxDecoration(
-                    color: const Color(0xFFE8F9F3),
+                    color: const Color(0xFFE4F8EF),
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: Icon(icon, color: const Color(0xFF1ED794), size: 24),
+                  child: imageIcon != null
+                      ? Padding(
+                          padding: const EdgeInsets.all(12),
+                          child: Image.asset(
+                            imageIcon,
+                            color: const Color(0xFF00A269),
+                          ),
+                        )
+                      : Icon(icon, color: const Color(0xFF00A269), size: 24),
                 ),
               ],
             ),
@@ -201,14 +219,16 @@ class _PropertyFinancialBreakdownState
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 15,
-                              color: Color(0xFF333333),
+                              color: Color(0xFF1D2126),
+                              fontFamily: 'Cairo',
                             ),
                           ),
                           Text(
                             item["label"]!,
                             style: const TextStyle(
-                              color: Color(0xFF999999),
+                              color: Color(0xFFACAFB5),
                               fontSize: 14,
+                              fontFamily: 'Cairo',
                             ),
                           ),
                         ],
@@ -226,14 +246,16 @@ class _PropertyFinancialBreakdownState
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
-                            color: Color(0xFF1ED794),
+                            color: Color(0xFF00A269),
+                            fontFamily: 'Cairo',
                           ),
                         ),
                         Text(
                           finalLabel,
                           style: const TextStyle(
-                            color: Color(0xFF999999),
+                            color: Color(0xFFACAFB5),
                             fontSize: 14,
+                            fontFamily: 'Cairo',
                           ),
                         ),
                       ],
@@ -256,7 +278,11 @@ class _PropertyFinancialBreakdownState
               ),
               child: Text(
                 footerText,
-                style: const TextStyle(color: Color(0xFF9E9E9E), fontSize: 13),
+                style: const TextStyle(
+                  color: Color(0xFFACAFB5),
+                  fontSize: 13,
+                  fontFamily: 'Cairo',
+                ),
                 textAlign: TextAlign.center,
               ),
             ),

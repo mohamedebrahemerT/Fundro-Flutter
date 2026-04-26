@@ -3,16 +3,18 @@ import 'package:flutter/material.dart';
 // حقل الإدخال المخصص
 class CustomAuthField extends StatelessWidget {
   final String hint;
-  final IconData prefixIcon;
+  final dynamic prefixIcon;
   final bool isPassword;
-  final Widget? suffixIcon;
+  final dynamic suffixIcon;
+  final double? hintSize;
 
   const CustomAuthField({
     super.key,
     required this.hint,
-    required this.prefixIcon,
+    this.prefixIcon,
     this.isPassword = false,
     this.suffixIcon,
+    this.hintSize,
   });
 
   @override
@@ -28,9 +30,9 @@ class CustomAuthField extends StatelessWidget {
         textAlign: TextAlign.right, // يدعم العربية
         decoration: InputDecoration(
           hintText: hint,
-          hintStyle: TextStyle(color: Colors.grey.shade400, fontSize: 14),
-          prefixIcon: Icon(prefixIcon, color: Colors.grey.shade500),
-          suffixIcon: suffixIcon,
+          hintStyle: TextStyle(color: Colors.grey.shade400, fontSize: hintSize ?? 14),
+          prefixIcon: _buildIcon(prefixIcon),
+          suffixIcon: _buildIcon(suffixIcon),
           border: InputBorder.none,
           contentPadding: const EdgeInsets.symmetric(
             vertical: 15,
@@ -39,6 +41,28 @@ class CustomAuthField extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Widget? _buildIcon(dynamic iconData) {
+    if (iconData == null) return null;
+    if (iconData is IconData) {
+      return Icon(iconData, color: Colors.grey.shade500);
+    }
+    if (iconData is Widget) {
+      return iconData;
+    }
+    if (iconData is String) {
+      return Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Image.asset(
+          iconData,
+          color: Colors.grey.shade500,
+          width: 22,
+          height: 22,
+        ),
+      );
+    }
+    return null;
   }
 }
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fundro_app/core/utils/dimensions.dart';
 import 'package:fundro_app/features/on_boarding/domain/models/on_boarding_model.dart';
 
 class OnboardingContent extends StatelessWidget {
@@ -12,20 +13,27 @@ class OnboardingContent extends StatelessWidget {
 
     return Column(
       children: [
-        Image.asset(
-          'assets/images/logo.png',
-          // width: Dimensions.width * 0.1,
+        Container(
+          height: Dimensions.height * 0.1,
+          width: Dimensions.width * 0.5,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/images/logo.png'),
+              fit: BoxFit.contain,
+            ),
+          ),
         ),
-        SizedBox(height: size.height * 0.1),
-        Image.asset(model.image, height: size.height * 0.35),
-        SizedBox(height: 40),
+        // SizedBox(height: size.height * 0.1),
+        Image.asset(model.image, height: size.height * 0.3, scale: 0.9),
+        // SizedBox(height: 20),
         Text(
           model.title,
           textAlign: TextAlign.center,
           style: TextStyle(
-            fontSize: 24,
+            fontSize: 20,
             fontWeight: FontWeight.bold,
-            color: Color(0xFF006D44),
+            fontFamily: 'Cairo',
+            color: Color(0xFF00A269),
           ),
         ),
         if (model.description.isNotEmpty) ...[
@@ -35,7 +43,7 @@ class OnboardingContent extends StatelessWidget {
             child: Text(
               model.description,
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 16, color: Colors.grey[600]),
+              style: TextStyle(fontSize: 17, color: Color(0xFF5E747C)),
             ),
           ),
         ],

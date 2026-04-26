@@ -29,6 +29,7 @@ class PropertyFundingBanner extends StatelessWidget {
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
+                    fontFamily: 'Cairo',
                   ),
                 ),
               ),
@@ -49,11 +50,11 @@ class PropertyFundingBanner extends StatelessWidget {
                 children: [
                   const Text(
                     "5.000",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, fontFamily: 'Cairo'),
                   ),
                   const Text(
                     "د.إ",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, fontFamily: 'Cairo'),
                   ),
                 ],
               ),

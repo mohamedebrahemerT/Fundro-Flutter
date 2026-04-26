@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fundro_app/core/utils/images.dart';
 
 class PropertyRentalStrategy extends StatelessWidget {
   const PropertyRentalStrategy({super.key});
@@ -8,7 +9,7 @@ class PropertyRentalStrategy extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        const Padding(
+        Padding(
           padding: EdgeInsets.only(top: 20, bottom: 20),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -22,7 +23,8 @@ class PropertyRentalStrategy extends StatelessWidget {
                 ),
               ),
               SizedBox(width: 12),
-              Icon(Icons.vpn_key_outlined, size: 24, color: Color(0xFF333333)),
+              Image.asset(Images.key, color: Colors.black),
+              // Icon(Icons.vpn_key_outlined, size: 24, color: Color(0xFF333333)),
             ],
           ),
         ),
@@ -60,7 +62,7 @@ class PropertyRentalStrategy extends StatelessWidget {
                 "تتمثل استراتيجية التأجير لهذا العقار في توليد عوائد شهرية منتظمة من خلال عقود سنوية مع مستأجرين علي المدي الطويل",
                 style: TextStyle(
                   color: Color(0xFF9E9E9E),
-                  fontSize: 14,
+                  fontSize: 16,
                   height: 1.5,
                 ),
                 textAlign: TextAlign.right,
@@ -94,7 +96,11 @@ class PropertyRentalStrategy extends StatelessWidget {
               const Divider(height: 40, color: Color(0xFFEEEEEE)),
               const Text(
                 "حالة الملكية",
-                style: TextStyle(color: Color(0xFF9E9E9E), fontSize: 14),
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               const SizedBox(height: 4),
               const Text(
@@ -110,7 +116,7 @@ class PropertyRentalStrategy extends StatelessWidget {
                 "هذا العقار مؤجر وسيبدأ في در الإيجار بمجرد اكتمال عملية النقل",
                 style: TextStyle(
                   color: Color(0xFF9E9E9E),
-                  fontSize: 13,
+                  fontSize: 16,
                   height: 1.4,
                 ),
                 textAlign: TextAlign.right,
@@ -118,7 +124,11 @@ class PropertyRentalStrategy extends StatelessWidget {
               const Divider(height: 40, color: Color(0xFFEEEEEE)),
               const Text(
                 "الإيجار السنوي المتوقع",
-                style: TextStyle(color: Color(0xFF9E9E9E), fontSize: 14),
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                ),
               ),
               const SizedBox(height: 4),
               const Text(
@@ -189,11 +199,7 @@ class PropertyRentalStrategy extends StatelessWidget {
                 ],
               ),
               const SizedBox(width: 15),
-              const Icon(
-                Icons.info_outline,
-                color: Color(0xFF1ED794),
-                size: 24,
-              ),
+              Image.asset(Images.protectIcon),
             ],
           ),
         ),

@@ -12,7 +12,14 @@ class InfoRow extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(label, style: const TextStyle(color: Colors.grey, fontSize: 13)),
+        Text(
+          label,
+          style: const TextStyle(
+            color: Color(0xff4A5565),
+            fontSize: 14,
+            fontFamily: 'Cairo',
+          ),
+        ),
         child,
       ],
     );

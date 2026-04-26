@@ -13,18 +13,9 @@ class _RewardsBannerCarouselState extends State<RewardsBannerCarousel> {
   int activeIndex = 0;
 
   final banners = [
-    {
-      "title": "رصيد المكافآت",
-      "amount": "AED 1000.00",
-    },
-    {
-      "title": "رصيد المحفظة",
-      "amount": "AED 5000.00",
-    },
-    {
-      "title": "إجمالي الاستثمارات",
-      "amount": "AED 6000.00",
-    },
+    {"title": "رصيد المكافآت", "amount": "AED 1000.00"},
+    {"title": "رصيد المحفظة", "amount": "AED 5000.00"},
+    {"title": "إجمالي الاستثمارات", "amount": "AED 6000.00"},
   ];
 
   @override
@@ -39,7 +30,7 @@ class _RewardsBannerCarouselState extends State<RewardsBannerCarousel> {
           },
           options: CarouselOptions(
             height: 180,
-            viewportFraction: 0.85,
+            viewportFraction: 1,
             enlargeCenterPage: true,
             onPageChanged: (index, reason) {
               setState(() {
@@ -54,7 +45,7 @@ class _RewardsBannerCarouselState extends State<RewardsBannerCarousel> {
           children: List.generate(banners.length, (index) {
             return AnimatedContainer(
               duration: const Duration(milliseconds: 300),
-              width: activeIndex == index ? 20 : 10,
+              width: 10,
               height: 10,
               margin: const EdgeInsets.symmetric(horizontal: 4),
               decoration: BoxDecoration(
@@ -69,6 +60,8 @@ class _RewardsBannerCarouselState extends State<RewardsBannerCarousel> {
             );
           }),
         ),
+      
+      
       ],
     );
   }
@@ -77,14 +70,12 @@ class _RewardsBannerCarouselState extends State<RewardsBannerCarousel> {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(color: Colors.white.withOpacity(0.3), width: 1.5),
         gradient: const LinearGradient(
-          colors: [
-            Color(0xFF1ED794),
-            Color(0xFF00B167),
-          ],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
+          colors: [Color(0xFF10E59A), Color(0xFF10704A)],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
         ),
       ),
       child: Stack(
@@ -105,10 +96,7 @@ class _RewardsBannerCarouselState extends State<RewardsBannerCarousel> {
                 itemBuilder: (context, index) {
                   return Transform.rotate(
                     angle: -0.2, // Subtle tilt
-                    child: Image.asset(
-                      Images.logo,
-                      color: Colors.white,
-                    ),
+                    child: Image.asset(Images.logo, color: Colors.white),
                   );
                 },
               ),

@@ -14,6 +14,7 @@ import 'package:fundro_app/features/property/presentation/widgets/property_finan
 import 'package:fundro_app/features/property/presentation/widgets/property_funding_timeline.dart';
 import 'package:fundro_app/features/property/presentation/widgets/property_additional_info.dart';
 import 'package:fundro_app/features/property/presentation/widgets/property_rent_guarantee_banner.dart';
+import 'package:fundro_app/features/property/presentation/widgets/property_image_carousel.dart';
 import '../screens/property_cart_screen.dart';
 
 class PropertyDetailsScreen extends StatelessWidget {
@@ -41,6 +42,7 @@ class PropertyDetailsScreen extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
+                          fontFamily: 'Cairo',
                         ),
                       ),
                       const SizedBox(height: 20),
@@ -105,23 +107,15 @@ class PropertyDetailsScreen extends StatelessWidget {
   // --- بناء الأجزاء الفرعية ---
 
   Widget _buildImageHeader(BuildContext context) {
-    return Stack(
-      children: [
-        Image.network(
-          'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800',
-          height: 300,
-          width: double.infinity,
-          fit: BoxFit.cover,
-        ),
-        Positioned(top: 40, right: 20, child: _circleIcon(Icons.share)),
-        Positioned(
-          top: 40,
-          left: 20,
-          child: _circleIcon(Icons.arrow_back_ios_new),
-        ),
+    return const PropertyImageCarousel(
+      images: [
+        'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800',
+        'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800',
+        'https://images.unsplash.com/photo-1600585154340-be6191ecdb10?w=800',
       ],
     );
   }
+
 
   Widget _buildFeaturesSection() {
     return const PropertyFeaturesGrid();
@@ -157,11 +151,19 @@ class PropertyDetailsScreen extends StatelessWidget {
               children: [
                 Text(
                   "AED 5,000",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                    fontFamily: 'Cairo',
+                  ),
                 ),
                 Text(
                   "الحد الأدنى",
-                  style: TextStyle(color: Colors.grey, fontSize: 12),
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 12,
+                    fontFamily: 'Cairo',
+                  ),
                 ),
               ],
             ),

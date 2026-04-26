@@ -9,24 +9,25 @@ class TimeTag extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       decoration: BoxDecoration(
-        color: const Color(0xFF1ED794).withOpacity(0.15),
+        color: const Color(0xFFE4FFF1),
         borderRadius: BorderRadius.circular(20),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Icon(Icons.access_time, size: 14, color: Color(0xFF1ED794)),
-          const SizedBox(width: 5),
           Text(
             text,
             style: const TextStyle(
-              fontSize: 11,
+              fontSize: 12,
               fontWeight: FontWeight.bold,
-              color: Color(0xFF1ED794),
+              color: Color(0xFF00A269),
+              fontFamily: 'Cairo',
             ),
           ),
+          const SizedBox(width: 5),
+          const Icon(Icons.access_time, size: 16, color: Color(0xFF00A269)),
         ],
       ),
     );

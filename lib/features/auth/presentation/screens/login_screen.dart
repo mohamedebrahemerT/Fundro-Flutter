@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fundro_app/core/utils/images.dart';
+import 'package:fundro_app/features/auth/presentation/screens/finger_print_screen.dart';
 import 'package:fundro_app/features/auth/presentation/screens/forget_password_screen.dart';
 import 'package:fundro_app/features/auth/presentation/screens/register_screen.dart';
 import 'package:fundro_app/features/auth/presentation/widgets/auth_button.dart';
@@ -31,7 +32,7 @@ class LoginScreen extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
-                  color: Color(0xFF1ED794),
+                  color: Color(0xFF00A269),
                 ),
               ),
 
@@ -40,14 +41,16 @@ class LoginScreen extends StatelessWidget {
               // حقول الإدخال
               const CustomAuthField(
                 hint: "أدخل بريدك الإلكتروني أو رقم هاتفك",
-                prefixIcon: Icons.email_outlined,
+                hintSize: 16,
+                suffixIcon: Images.email,
               ),
               const SizedBox(height: 15),
               const CustomAuthField(
                 hint: "أدخل كلمة المرور",
-                prefixIcon: Icons.lock_outline,
+                hintSize: 16,
+                suffixIcon: Images.lockIcon,
                 isPassword: true,
-                suffixIcon: Icon(Icons.visibility_outlined, color: Colors.grey),
+                prefixIcon: Icon(Icons.visibility_outlined, color: Colors.grey),
               ),
 
               // رابط نسيت كلمة المرور
@@ -59,7 +62,7 @@ class LoginScreen extends StatelessWidget {
                   },
                   child: const Text(
                     "نسيت كلمة المرور؟",
-                    style: TextStyle(color: Colors.grey, fontSize: 12),
+                    style: TextStyle(color: Colors.grey, fontSize: 15),
                   ),
                 ),
               ),
@@ -69,10 +72,11 @@ class LoginScreen extends StatelessWidget {
               // أزرار تسجيل الدخول وإنشاء حساب
               AuthButton(
                 text: "تسجيل الدخول",
-                color: const Color(0xFF1ED794),
+                color: const Color(0xFF1ED68D),
                 textColor: Colors.white,
                 onPressed: () {
-                  Get.to(() => const HomeScreen());
+                  Get.to(() => const FingerPrintScreen());
+                  // Get.to(() => const HomeScreen());
                 },
               ),
               const SizedBox(height: 15),
@@ -97,7 +101,10 @@ class LoginScreen extends StatelessWidget {
                       padding: EdgeInsets.symmetric(horizontal: 10),
                       child: Text(
                         "أو",
-                        style: TextStyle(color: Color(0xFF1ED794)),
+                        style: TextStyle(
+                          color: Color(0xFF1ED794),
+                          fontSize: 15,
+                        ),
                       ),
                     ),
                     Expanded(child: Divider(color: Colors.grey.shade300)),
@@ -123,7 +130,7 @@ class LoginScreen extends StatelessWidget {
               const Text.rich(
                 TextSpan(
                   text: "بالضغط على تسجيل الدخول فإنك توافق على ",
-                  style: TextStyle(color: Colors.grey, fontSize: 12),
+                  style: TextStyle(color: Colors.grey, fontSize: 13),
                   children: [
                     TextSpan(
                       text: "الشروط والأحكام\n",
@@ -150,23 +157,27 @@ class LoginScreen extends StatelessWidget {
 
   Widget _buildHeader() {
     return Padding(
-      padding: const EdgeInsets.only(top: 10),
+      padding: const EdgeInsets.only(top: 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
             decoration: BoxDecoration(
-              color: const Color(0xFFE8F9F3),
+              color: const Color(0xFFCDFEE3),
               borderRadius: BorderRadius.circular(8),
             ),
-            child: const Row(
+            child: Row(
               children: [
-                Icon(Icons.language, size: 16, color: Color(0xFF1ED794)),
-                SizedBox(width: 5),
-                Text(
+                Image.asset(Images.language, height: 16, width: 16),
+                const SizedBox(width: 5),
+                const Text(
                   "تغيير اللغة",
-                  style: TextStyle(color: Color(0xFF1ED794), fontSize: 14),
+                  style: TextStyle(
+                    color: Color(0xFF02C780),
+                    fontSize: 15,
+                    fontFamily: 'Cairo',
+                  ),
                 ),
               ],
             ),
@@ -188,4 +199,6 @@ class LoginScreen extends StatelessWidget {
       ),
     );
   }
+
+
 }

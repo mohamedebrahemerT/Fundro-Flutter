@@ -10,6 +10,7 @@ import 'package:fundro_app/core/utils/messages.dart';
 import 'package:fundro_app/features/auth/presentation/screens/sign_in_screen.dart';
 import 'package:fundro_app/features/language/presentation/controllers/language_controller.dart';
 import 'package:fundro_app/features/on_boarding/presentation/screens/on_boarding_screen.dart';
+import 'package:fundro_app/features/splash/presentation/screens/splash_screen.dart';
 import 'package:fundro_app/theme/dark_theme.dart';
 import 'package:fundro_app/theme/light_theme.dart';
 import 'package:flutter/foundation.dart';
@@ -19,9 +20,6 @@ import 'core/helper/get_di.dart' as di;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-    if (ResponsiveHelper.isMobilePhone()) {
-    HttpOverrides.global = MyHttpOverrides();
-  }
   // await Firebase.initializeApp(
   //   options: DefaultFirebaseOptions.currentPlatform,
   // );
@@ -35,15 +33,15 @@ Future<void> main() async {
   //   runApp(
   //   DevicePreview(
   //     enabled: true,
-  //     builder: (context) => brand_deals(languages: languages,),
+  //     builder: (context) => Fundro(languages: languages,),
   //   ),
   // );
-  // runApp(brand_deals(languages: null));
-  runApp(brand_deals(languages: languages));
+  // runApp(Fundro(languages: null));
+  runApp(Fundro(languages: languages));
 }
 
-class brand_deals extends StatelessWidget {
-  const brand_deals({super.key, required this.languages});
+class Fundro extends StatelessWidget {
+  const Fundro({super.key, required this.languages});
   // final LanguageRepositoryInterface? repo;
   final Map<String, Map<String, String>>? languages;
   @override
@@ -68,7 +66,7 @@ class brand_deals extends StatelessWidget {
               // home:  UpdateAppScreen(),
               // home: SplashScreen(),
               // home:  initRoute(),
-              home: OnboardingScreen(),
+              home: SplashScreen(),
               // home: MainLayout(),
               // home: MainLayout(),
             );
@@ -78,14 +76,7 @@ class brand_deals extends StatelessWidget {
     );
   }
 }
-class MyHttpOverrides extends HttpOverrides {
-  @override
-  HttpClient createHttpClient(SecurityContext? context) {
-    return super.createHttpClient(context)
-      ..badCertificateCallback =
-          (X509Certificate cert, String host, int port) => true;
-  }
-}
+
 
 void handleError() {
   FlutterError.onError = (FlutterErrorDetails details) {

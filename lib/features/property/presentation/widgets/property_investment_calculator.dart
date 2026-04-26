@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fundro_app/core/utils/images.dart';
 
 class PropertyInvestmentCalculator extends StatelessWidget {
   const PropertyInvestmentCalculator({super.key});
@@ -8,7 +9,7 @@ class PropertyInvestmentCalculator extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        const Padding(
+        Padding(
           padding: EdgeInsets.only(top: 20, bottom: 20),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -18,15 +19,17 @@ class PropertyInvestmentCalculator extends StatelessWidget {
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
-                  color: Color(0xFF333333),
+                  color: Color(0xFF1D2126),
+                  fontFamily: 'Cairo',
                 ),
               ),
               SizedBox(width: 12),
-              Icon(
-                Icons.calculate_outlined,
-                size: 24,
-                color: Color(0xFF333333),
-              ),
+              Image.asset(Images.calculate, width: 24, height: 24),
+              // Icon(
+              //   Icons.calculate_outlined,
+              //   size: 24,
+              //   color: Color(0xFF333333),
+              // ),
             ],
           ),
         ),
@@ -44,12 +47,12 @@ class PropertyInvestmentCalculator extends StatelessWidget {
                     width: 48,
                     height: 48,
                     decoration: BoxDecoration(
-                      color: const Color(0xFFE8F9F3),
+                      color: const Color(0xFFE4F8EF),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: const Icon(
                       Icons.trending_up,
-                      color: Color(0xFF1ED794),
+                      color: Color(0xFF00A269),
                       size: 24,
                     ),
                   ),
@@ -60,8 +63,9 @@ class PropertyInvestmentCalculator extends StatelessWidget {
                       const Text(
                         "القيمة المتوقعة للاستثمار خلال 5 سنوات",
                         style: TextStyle(
-                          color: Color(0xFF9E9E9E),
-                          fontSize: 13,
+                          color: Color(0xFFACAFB5),
+                          fontSize: 14,
+                          fontFamily: 'Cairo',
                         ),
                       ),
                       const SizedBox(height: 4),
@@ -74,15 +78,16 @@ class PropertyInvestmentCalculator extends StatelessWidget {
                               vertical: 2,
                             ),
                             decoration: BoxDecoration(
-                              color: const Color(0xFFE8F9F3),
+                              color: const Color(0xFFE4F8EF),
                               borderRadius: BorderRadius.circular(20),
                             ),
                             child: const Text(
                               "+39.61%",
                               style: TextStyle(
-                                color: Color(0xFF1ED794),
+                                color: Color(0xFF00A269),
                                 fontSize: 12,
                                 fontWeight: FontWeight.bold,
+                                fontFamily: 'Cairo',
                               ),
                             ),
                           ),
@@ -92,7 +97,8 @@ class PropertyInvestmentCalculator extends StatelessWidget {
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 18,
-                              color: Color(0xFF333333),
+                              color: Color(0xFF1D2126),
+                              fontFamily: 'Cairo',
                             ),
                           ),
                         ],
@@ -114,7 +120,8 @@ class PropertyInvestmentCalculator extends StatelessWidget {
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 16,
-            color: Color(0xFF333333),
+            color: Color(0xFF1D2126),
+            fontFamily: 'Cairo',
           ),
           textAlign: TextAlign.right,
         ),
@@ -128,7 +135,7 @@ class PropertyInvestmentCalculator extends StatelessWidget {
                 height: 50,
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 decoration: BoxDecoration(
-                  border: Border.all(color: const Color(0xFF1ED794)),
+                  border: Border.all(color: const Color(0xFF00A269)),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: const Row(
@@ -139,11 +146,16 @@ class PropertyInvestmentCalculator extends StatelessWidget {
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
+                        fontFamily: 'Cairo',
                       ),
                     ),
                     Text(
                       "AED",
-                      style: TextStyle(color: Color(0xFF9E9E9E), fontSize: 14),
+                      style: TextStyle(
+                        color: Color(0xFFACAFB5),
+                        fontSize: 14,
+                        fontFamily: 'Cairo',
+                      ),
                     ),
                   ],
                 ),
@@ -167,16 +179,21 @@ class PropertyInvestmentCalculator extends StatelessWidget {
           style: const TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 14,
-            color: Color(0xFF333333),
+            color: Color(0xFF1D2126),
+            fontFamily: 'Cairo',
           ),
         ),
         const SizedBox(width: 8),
         Text(
           label,
-          style: const TextStyle(color: Color(0xFF9E9E9E), fontSize: 13),
+          style: const TextStyle(
+            color: Color(0xFFACAFB5),
+            fontSize: 14,
+            fontFamily: 'Cairo',
+          ),
         ),
         const SizedBox(width: 8),
-        const Icon(Icons.info_outline, size: 16, color: Color(0xFF1ED794)),
+        const Icon(Icons.info_outline, size: 18, color: Color(0xFF00A269)),
       ],
     );
   }
@@ -186,7 +203,7 @@ class PropertyInvestmentCalculator extends StatelessWidget {
       width: 50,
       height: 50,
       decoration: BoxDecoration(
-        border: Border.all(color: const Color(0xFF1ED794)),
+        border: Border.all(color: const Color(0xFF00A269)),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Icon(icon, color: Colors.black, size: 24),

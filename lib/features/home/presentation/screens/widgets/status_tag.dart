@@ -41,7 +41,9 @@ class StatusTag extends StatelessWidget {
           fontSize: 12,
           color: textColor,
           fontWeight: FontWeight.bold,
+          fontFamily: 'Cairo',
         ),
+
       ),
     );
   }

@@ -32,28 +32,29 @@ class FilterRow extends StatelessWidget {
             duration: const Duration(milliseconds: 250),
             curve: Curves.easeInOut,
             margin: const EdgeInsets.only(left: 8),
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             decoration: BoxDecoration(
               color: isSelected
-                  ? const Color(0xFF1ED794)
-                  : Colors.grey.shade100,
+                  ? const Color(0xFF00A269)
+                  : const Color(0xFFEBFEF4),
               borderRadius: BorderRadius.circular(20),
-              boxShadow: isSelected
-                  ? [
-                      BoxShadow(
-                        color: const Color(0xFF1ED794).withOpacity(0.35),
-                        blurRadius: 8,
-                        offset: const Offset(0, 3),
-                      ),
-                    ]
-                  : [],
+              // boxShadow: isSelected
+              //     ? [
+              //         BoxShadow(
+              //           color: const Color(0xFF00A269),
+              //           blurRadius: 8,
+              //           offset: const Offset(0, 3),
+              //         ),
+              //       ]
+              //     : [],
             ),
             child: Text(
               item.label,
               style: TextStyle(
-                fontSize: 12,
+                fontSize: 15,
+                fontFamily: 'Cairo',
                 fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-                color: isSelected ? Colors.white : Colors.black54,
+                color: isSelected ? Colors.white : Color(0xFF148F5F),
               ),
             ),
           ),

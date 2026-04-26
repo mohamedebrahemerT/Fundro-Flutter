@@ -6,7 +6,8 @@ import 'package:fundro_app/theme/custom_decoration.dart';
 /// AppBar الرئيسي لشاشة العقارات
 /// يطابق التصميم: خلفية خضراء، عنوان "العقارات" في المنتصف بخط أبيض عريض
 class AppBarHome extends StatelessWidget implements PreferredSizeWidget {
-  const AppBarHome({super.key});
+  final String title;
+  const AppBarHome({super.key, this.title = "العقارات"});
 
   @override
   Size get preferredSize => Size.fromHeight(Dimensions.height * 0.09);
@@ -14,18 +15,18 @@ class AppBarHome extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: Dimensions.height * 0.9,
+      height: Dimensions.height * 0.09,
       alignment: Alignment.center,
       decoration: CustomDecoration.getDecoration(
         context: context,
-        color: const Color(0xFF1ED794),
+        color: const Color(0xFF00A269),
         borderRadiusDirection: BorderRadius.only(
           bottomLeft: Radius.circular(20),
           bottomRight: Radius.circular(20),
         ),
       ),
       child: Text(
-        "العقارات",
+        title,
         style: cairoBold.copyWith(
           color: Colors.white,
           fontSize: Dimensions.fontSizeExtraLarge,

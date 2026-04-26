@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fundro_app/core/utils/images.dart';
 
 class PropertyHowItWorks extends StatelessWidget {
   const PropertyHowItWorks({super.key});
@@ -19,6 +20,7 @@ class PropertyHowItWorks extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
                   color: Color(0xFF333333),
+                  fontFamily: 'Cairo',
                 ),
               ),
               SizedBox(width: 12),
@@ -29,7 +31,7 @@ class PropertyHowItWorks extends StatelessWidget {
         _buildItem(
           title: "تملك جزءا من هذا العقار",
           subtitle: "عرض وثائق الملكية",
-          icon: Icons.verified_outlined,
+          imageIcon: Images.verfication,
           hasArrow: true,
         ),
         _buildItem(
@@ -47,10 +49,12 @@ class PropertyHowItWorks extends StatelessWidget {
     );
   }
 
+
   Widget _buildItem({
     required String title,
     required String subtitle,
-    required IconData icon,
+    IconData? icon,
+    String? imageIcon,
     bool hasArrow = false,
   }) {
     return Container(
@@ -78,12 +82,17 @@ class PropertyHowItWorks extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   fontSize: 16,
                   color: Color(0xFF333333),
+                  fontFamily: 'Cairo',
                 ),
               ),
               const SizedBox(height: 2),
               Text(
                 subtitle,
-                style: const TextStyle(color: Color(0xFF9E9E9E), fontSize: 13),
+                style: const TextStyle(
+                  color: Colors.grey,
+                  fontSize: 14,
+                  fontFamily: 'Cairo',
+                ),
               ),
             ],
           ),
@@ -92,13 +101,19 @@ class PropertyHowItWorks extends StatelessWidget {
             width: 48,
             height: 48,
             decoration: BoxDecoration(
-              color: const Color(0xFFE8F9F3),
+              color: const Color(0xFFE4F8EF),
               borderRadius: BorderRadius.circular(12),
             ),
-            child: Icon(icon, color: const Color(0xFF1ED794), size: 24),
+            child: imageIcon != null
+                ? Padding(
+                    padding: const EdgeInsets.all(12),
+                    child: Image.asset(imageIcon, color: const Color(0xFF00A269)),
+                  )
+                : Icon(icon, color: const Color(0xFF00A269), size: 24),
           ),
         ],
       ),
     );
   }
 }
+

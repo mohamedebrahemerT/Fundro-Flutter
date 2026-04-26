@@ -6,22 +6,27 @@ class PropertyFundingStats extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         const SizedBox(height: 10),
         const Text(
           "ممولة بنسبة 100%",
           style: TextStyle(
-            color: Color(0xFF1ED794),
+            color: Color(0xFF00A269),
             fontWeight: FontWeight.bold,
             fontSize: 20,
+            fontFamily: 'Cairo',
           ),
           textAlign: TextAlign.center,
         ),
         const SizedBox(height: 6),
         const Text(
           "1461 مستثمر • December 1, 2025",
-          style: TextStyle(color: Color(0xFF9E9E9E), fontSize: 14),
+          style: TextStyle(
+            color: Color(0xFF646B76),
+            fontSize: 14,
+            fontFamily: 'Cairo',
+          ),
           textAlign: TextAlign.center,
         ),
         const SizedBox(height: 25),
